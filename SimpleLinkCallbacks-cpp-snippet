@@ -1,0 +1,10 @@
+#if (defined(sl_HttpServerCallback))
+typedef void(*httpServerCallback_t)(SlHttpServerEvent_t *, SlHttpServerResponse_t *);
+httpServerCallback_t sysHttpCallbackHandler = NULL;
+
+extern void sl_HttpServerCallback(SlHttpServerEvent_t *pSlHttpServerEvent, SlHttpServerResponse_t *pSlHttpServerResponse)
+{
+    if (sysHttpCallbackHandler != NULL)
+        sysHttpCallbackHandler(pSlHttpServerEvent, pSlHttpServerResponse);
+}
+#endif

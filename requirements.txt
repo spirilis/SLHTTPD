@@ -1,0 +1,23 @@
+SimpleLink HTTP Server abstraction layer
+
+1. SimpleLink API changes
+	- Registration for callback function for handling events and responses
+	- Callback prototype: void callback(SlHttpServerEvent_t *, SlHttpServerResponse_t *)
+	- Library registers a function as the universal callback
+
+2. Registration for GET and POST token callbacks
+	- Malloc()'d linked list including a token ID, plus pointer to callback function
+	- Callback function for a GET token is of type size_t callback(const char *token, void *inbuf)
+	- Callback function for a POST token is of type void callback(const char *token, const void *data, const size_t len)
+
+3. Static functions for configuring:
+	- Hostname
+	- Port
+	- Use ROM pages or not
+	- Switch mDNS on or off
+
+4. Doxygen pages for documenting the following:
+	- Built-in tokens
+	- Filesystem layout
+	- Inline documentation for all API functions
+	- Outline or checklist of integration tasks for utilizing this library for a new project
